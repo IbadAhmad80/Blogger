@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+$primary-color: rgb(30, 68, 27);
+$primary-font: "Lobster Two", cursive;
+$secondary-font: "Roboto", sans-serif;
+$read_font: "Handlee", cursive;
+
+@mixin featured_section($height) {
+  flex: 1;
+  height: $height;
+  @content;
+}
+@mixin site_main($size) {
+  font-size: $size;
+  color: $primary-color;
+  font-weight: 200;
+}
+@mixin single_post($margin, $size, $spacing) {
+  font-family: $read-font;
+  font-size: $size;
+  margin: $margin;
+  letter-spacing: $spacing;
+  @content;
+}
+
+@mixin post_cred($size) {
+  margin-top: 0;
+  color: white;
+  font-size: $size;
+  font-weight: lighter;
+  letter-spacing: 0.02cm;
+  font-family: $read_font;
+  @content;
+}
+@mixin switch_structure($margin, $width, $padding) {
+  margin: $margin;
+  border: 1px solid gray;
+  height: 5rem;
+  width: $width;
+  padding: $padding;
+}
+
+.posts_structure {
+  display: flex;
+  margin: 4rem 7rem;
+  justify-content: space-between;
+  align-items: center;
+}

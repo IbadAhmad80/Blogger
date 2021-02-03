@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "posts",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "minLength": 20
+    },
+    "categories": {
+      "collection": "category",
+      "via": "posts"
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "likes": {
+      "type": "integer"
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

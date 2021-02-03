@@ -1,0 +1,50 @@
+@import "./config";
+.contact_form {
+  margin: 0rem 7rem 0rem 12rem;
+  .contact_heading {
+    margin: 0rem 0rem 2rem 7rem;
+    font-family: $primary-font;
+    font-size: 2.3rem;
+  }
+  .input_field {
+    height: 3.2rem;
+    width: 20rem;
+    padding: 1rem;
+    color: gray;
+    margin: 0rem 1rem 1rem 1rem;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 0px;
+  }
+  .message {
+    @extend .input_field;
+    height: 6.8rem;
+    width: 33rem;
+    margin: 1rem 1rem;
+  }
+  .submit_btn {
+    margin: 1rem 2rem;
+    padding: 0.7rem 1rem;
+    outline: none;
+    border: 1px solid black;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.03cm;
+    font-family: $secondary-font;
+    transition: 0.8s;
+    &:hover {
+      cursor: pointer;
+      background-color: black;
+      color: white;
+    }
+  }
+}
+.accordion {
+  margin: 5rem 8rem;
+  .accordion_heading {
+    margin: 0rem 0rem 2rem 7rem;
+    font-family: $primary-font;
+    font-size: 2.3rem;
+  }
+}

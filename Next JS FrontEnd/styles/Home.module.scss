@@ -1,0 +1,196 @@
+@import "./config";
+
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/Background-image.png");
+  background-repeat: no-repeat;
+  background-size: 110% 85%;
+  .title {
+    font-family: $primary-font;
+    margin: 0;
+    line-height: 1.15;
+    font-size: 4rem;
+    a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      transition: 0.5s;
+
+      &:hover {
+        font-size: 4.2rem;
+        color: rgb(59, 1, 1);
+      }
+    }
+  }
+
+  button {
+    margin: 2rem 14rem;
+    padding: 1rem 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: $primary-color;
+    font-weight: bold;
+    transition: 0.8s;
+    &:hover {
+      cursor: pointer;
+      background-image: linear-gradient($primary-color, gray);
+      color: white;
+      border-radius: 20px;
+    }
+  }
+}
+
+.feature_blogs {
+  @extend .posts_structure;
+  .feature_flex_1 {
+    @include featured_section(20rem);
+    margin-right: 2rem;
+  }
+  .feature_flex_2 {
+    @include featured_section(20rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .feature_grid_1,
+    .feature_grid_2,
+    .feature_grid_3,
+    .feature_grid_4 {
+      height: 10.25rem;
+    }
+  }
+}
+
+.post_title {
+  @include post_cred(2rem);
+  padding: 14rem 1.2rem 1rem 1.2rem;
+  cursor: pointer;
+}
+.post_title_grid {
+  @include post_cred(1rem);
+  padding: 0.4rem 0.5rem 0.4rem 0.5rem;
+  margin: 0.8rem 0rem 0rem 0rem;
+  border: 1px solid maroon;
+  font-weight: lighter;
+  height: 3.4rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.tabs_section {
+  @extend .posts_structure;
+
+  margin-top: 5rem;
+  .postsTab {
+    @include featured_section(26rem);
+    border: 1px solid gray;
+    .switch_post_container {
+      margin: 1.2rem 1.2rem 1.2rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      .switch_post_image {
+        @include switch_structure(0rem 0rem 0rem 0rem, 10rem, 0rem 0rem);
+      }
+      .switch_post_caption {
+        @include switch_structure(0rem 0rem 0rem 1rem, 30rem, 1.6rem 1rem);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .read_more {
+    @include featured_section(26rem);
+    margin-left: 2rem;
+    border: 1px solid gray;
+    .read_more_heading {
+      padding: 1rem 0rem 0.7rem 2rem;
+      font-family: $primary-font;
+      color: maroon;
+      font-size: 1.7rem;
+      text-decoration: underline;
+    }
+    .read_more_container {
+      display: flex;
+      margin: 0.7rem 1rem 0rem 1rem;
+      .read_more_logo {
+        color: $primary-color;
+        font-size: 1.3rem;
+      }
+      .read_more_title {
+        font-family: $read-font;
+        font-size: 1.1rem;
+        margin-left: 1rem;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.lower_image {
+  height: 40rem;
+  width: 100%;
+  margin: -22rem 0 1rem 0rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/assets/Background-image-2.png");
+}
+.linear_container {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5));
+}
+
+.category {
+  display: grid;
+  margin: 3rem 2rem 3rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 12rem 12rem;
+  justify-content: space-between;
+  row-gap: 6rem;
+  column-gap: 3rem;
+  .category_heading {
+    font-size: large;
+    font-family: $read-font;
+    font-weight: bolder;
+    margin-left: 2rem;
+  }
+  .category_container {
+    height: 20rem;
+    .post {
+      @include post_cred(1rem);
+      width: 14.5rem;
+      text-align: center;
+      margin: 4.6rem 0rem 0rem 0rem;
+      padding: 0.4rem 0.9rem 0rem 0.9rem;
+      color: white;
+      height: 3.6rem;
+      font-weight: bolder;
+      border: 1px solid maroon;
+      cursor: pointer;
+    }
+  }
+}
+
+.more_blogs {
+  margin: 12rem 3rem 3rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  grid-template-rows: 10rem 10rem 10rem;
+  .more_container {
+    border: 1px solid gray;
+    .post_more_grid {
+      @extend .post_title_grid;
+      margin: 0.7rem 0rem 0.4rem 0rem;
+      padding: 0.4rem 0.6rem 0.8rem 0.6rem;
+      height: 3.5rem;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+  }
+}

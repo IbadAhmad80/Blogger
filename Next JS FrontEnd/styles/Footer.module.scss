@@ -1,0 +1,113 @@
+@import "./config";
+.mainGrid {
+  margin-top: 2vw;
+  background-color: $primary-color;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(10px, 60px);
+  justify-content: center;
+  align-items: center;
+  row-gap: 2vw;
+
+  .footer_heading {
+    grid-row: 1/3;
+    grid-column: 1/6;
+    font-size: 3vw;
+    font-family: $read-font;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    align-self: end;
+    text-align: center;
+    font-weight: bolder;
+  }
+
+  .getStart {
+    margin-left: 4rem;
+    grid-row: 5;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .heading {
+    padding-left: 1rem;
+    font-size: 1.7vw;
+    font-weight: bolder;
+    color: white;
+    letter-spacing: 0.02cm;
+    font-family: $read-font;
+  }
+  .getStart li,
+  .about_us li {
+    margin-top: -0.3rem;
+    padding-top: 0.9vw;
+    list-style: none;
+    font-size: 1.25vw;
+    font-weight: medium;
+    color: rgb(0, 0, 0);
+    letter-spacing: 0.03cm;
+    font-weight: 600;
+  }
+
+  .about_us {
+    margin-left: 4rem;
+    grid-row: 5;
+    grid-column: 2;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .subscribe {
+    grid-row: 5;
+    grid-column: 3/5;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .email1 {
+    height: 7vh;
+    width: 20vw;
+    padding-left: 2vw;
+  }
+
+  .subscribe_button {
+    margin-top: 2vw;
+    margin-left: 6.5vw;
+    grid-row: 5;
+    grid-column: 5;
+    justify-self: end;
+    align-self: end;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
+    font-size: 0.8vw;
+    letter-spacing: 0.05cm;
+    padding: 1vw;
+    color: rgb(255, 255, 255);
+    outline: none;
+    border: 0.5px solid white;
+    transition: font-size;
+    transition-timing-function: linear;
+    transition-duration: 0.3s;
+    text-transform: uppercase;
+    background-color: transparent;
+    // background-image: linear-gradient(rgb(16, 39, 248), rgb(72, 26, 238));
+  }
+  .subscribe_button:hover {
+    font-size: 1.1vw;
+    margin-left: 5.5vw;
+  }
+
+  .copyrighted_text {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    text-align: center;
+    color: black;
+    letter-spacing: 0.03cm;
+    font-size: 1.8vw;
+    font-family: $read-font;
+    font-weight: bolder;
+  }
+  .social_logos {
+    color: black;
+  }
+}
