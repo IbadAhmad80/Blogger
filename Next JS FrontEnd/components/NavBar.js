@@ -71,7 +71,7 @@ export default function Navbar() {
               <Link href="/">
                 <h6>Home</h6>
               </Link>
-              <h6>Paid Blogs</h6>
+              <h6>Create Post</h6>
 
               <Link href="/about">
                 <h6>About</h6>

@@ -3,7 +3,6 @@ import Accordion from "../components/ContactPage/Accordion";
 import Form from "../components/ContactPage/Form";
 import styles from "../styles/Contact.module.scss";
 import GoogleMap from "../components/ContactPage/Map";
-import { server } from "../config/index";
 
 // import ReadMore from "../components/HomePage/ReadMore";
 export default function Contact({ blogs }) {

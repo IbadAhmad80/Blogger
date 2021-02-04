@@ -3,22 +3,22 @@ import Styles from "../../styles/Home.module.scss";
 import Link from "next/Link";
 
 export default function MoreBlogs({ title, image, id }) {
-  const computeTitle = (title) => {
-    const caption = title.split(" ").slice(0, 6);
-    return (
-      caption[0] +
-      " " +
-      caption[1] +
-      " " +
-      caption[2] +
-      " " +
-      caption[3] +
-      " " +
-      caption[4] +
-      " " +
-      caption[5]
-    );
-  };
+  // const computeTitle = (title) => {
+  //   const caption = title.split(" ").slice(0, 6);
+  //   return (
+  //     caption[0] +
+  //     " " +
+  //     caption[1] +
+  //     " " +
+  //     caption[2] +
+  //     " " +
+  //     caption[3] +
+  //     " " +
+  //     caption[4] +
+  //     " " +
+  //     caption[5]
+  //   );
+  // };
 
   return (
     <div className={Styles.more_container}>
@@ -42,6 +42,7 @@ export default function MoreBlogs({ title, image, id }) {
               pathname: `/posts/${id}`,
               query: { id: id },
             }}
+            as={`/posts/${id}`}
           >
             <h6
               className={Styles.post_more_grid}

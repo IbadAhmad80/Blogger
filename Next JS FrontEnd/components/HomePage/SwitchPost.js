@@ -34,6 +34,7 @@ export default function SwitchPost({ title, image, id, type }) {
             pathname: `/posts/${id}`,
             query: { id: id },
           }}
+          as={`/posts/${id}`}
         >
           <div
             className={

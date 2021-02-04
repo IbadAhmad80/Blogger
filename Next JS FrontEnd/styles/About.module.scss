@@ -1,0 +1,76 @@
+@import "./config";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100&display=swap");
+
+.about_section {
+  background-color: rgb(241, 238, 234);
+  padding: 2rem 11rem 4rem 11rem;
+  .about_heading {
+    text-align: center;
+    font-size: 2.6rem;
+    font-family: $read-font;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+  }
+  .about_grid {
+    .image_center {
+      background-image: url("/assets/nature.jpg");
+      height: 34rem;
+      width: 62rem;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      margin-bottom: 3rem;
+    }
+    .main_content {
+      margin: 2rem 3rem;
+      font-size: 1.4rem;
+      text-align: justify;
+      font-family: "Josefin Slab", serif;
+    }
+    .secondary_content {
+      @extend .main_content;
+      font-weight: lighter;
+      color: rgb(141, 137, 137);
+      letter-spacing: 0.01cm;
+      font-weight: bolder;
+      font-size: 1.3rem;
+    }
+    .goal_section {
+      display: grid;
+      margin: 0rem 4rem 4rem 4rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 15rem 20rem;
+      column-gap: 4rem;
+      row-gap: 4rem;
+
+      .goal_title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: $read-font;
+        margin: 2rem 0rem 0rem 0rem;
+      }
+      .goal_content {
+        margin: 1rem 0rem 0rem 0rem;
+        text-align: justify;
+        font-size: 1.3rem;
+        color: rgb(141, 137, 137);
+        font-family: "Josefin Slab", serif;
+        letter-spacing: 0.01cm;
+        font-weight: bolder;
+      }
+    }
+  }
+  .tag_heading {
+    font-size: 1.5rem;
+    font-family: $read-font;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 0rem;
+  }
+  .tag_section {
+    margin: 0rem 19rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 28rem;
+    column-gap: 0.7rem;
+  }
+}

@@ -9,6 +9,7 @@ export default function Tag({ tag }) {
           pathname: `/posts/category/${tag.toLowerCase()}`,
           query: { name: tag.toLowerCase() },
         }}
+        as={`/posts/category/${tag.toLowerCase()}`}
       >
         <h6
           style={{

@@ -31,7 +31,6 @@ export default function Home({ blogs }) {
       </div>
       <div className={styles.lower_image}></div>
       <div className={styles.category}>
-        {/* <div> */}
         <CategoryPost blogs={blogs} category="entertainment" />
         <CategoryPost blogs={blogs} category="sports" />
         <CategoryPost blogs={blogs} category="health" />

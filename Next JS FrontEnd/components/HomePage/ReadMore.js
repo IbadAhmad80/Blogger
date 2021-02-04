@@ -37,6 +37,7 @@ export default function ReadMore({ blogs, type }) {
               pathname: `/posts/${blogs[6].id}`,
               query: { id: blogs[6].id },
             }}
+            as={`/posts/${blogs[6].id}`}
           >
             <span
               className={
@@ -70,6 +71,7 @@ export default function ReadMore({ blogs, type }) {
               pathname: `/posts/${blogs[7].id}`,
               query: { id: blogs[7].id },
             }}
+            as={`/posts/${blogs[7].id}`}
           >
             <span
               className={
@@ -103,6 +105,7 @@ export default function ReadMore({ blogs, type }) {
               pathname: `/posts/${blogs[8].id}`,
               query: { id: blogs[8].id },
             }}
+            as={`/posts/${blogs[8].id}`}
           >
             <span
               className={
@@ -136,6 +139,7 @@ export default function ReadMore({ blogs, type }) {
               pathname: `/posts/${blogs[9].id}`,
               query: { id: blogs[9].id },
             }}
+            as={`/posts/${blogs[9].id}`}
           >
             <span
               className={
@@ -169,6 +173,7 @@ export default function ReadMore({ blogs, type }) {
               pathname: `/posts/${blogs[2].id}`,
               query: { id: blogs[2].id },
             }}
+            as={`/posts/${blogs[2].id}`}
           >
             <span
               className={
@@ -202,6 +207,7 @@ export default function ReadMore({ blogs, type }) {
               pathname: `/posts/${blogs[3].id}`,
               query: { id: blogs[3].id },
             }}
+            as={`/posts/${blogs[3].id}`}
           >
             <span
               className={

@@ -27,6 +27,7 @@ export default function FeaturedPostGrid({ title, image, blogs, id }) {
                 pathname: `/posts/${id}`,
                 query: { id: id },
               }}
+              as={`/posts/${id}`}
             >
               <h6
                 className={Styles.post_title_grid}

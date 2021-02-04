@@ -1,30 +1,22 @@
 import React from "react";
-import { server } from "../../config/index";
+import AboutPortal from "../components/AboutPage/Index";
+import styles from "../styles/About.module.scss";
+import Tag from "../components/SinglePost/Tag";
 
-export default function About({ blogs }) {
+export default function About({}) {
   return (
     <>
-      <div className={Styles.container}>
-        {blogs.map((blog) => {
-          return (
-            <h5>
-              Title is {blog.title} and its author is {blog.author}
-            </h5>
-          );
-        })}
+      <div className={styles.about_section}>
+        <h5 className={styles.about_heading}>Know more About Us</h5>
+        <AboutPortal />
+        <h6 className={styles.tag_heading}>Read about</h6>
+        <div className={styles.tag_section}>
+          <Tag tag={"Entertainment"} />
+          <Tag tag={"Technology"} />
+          <Tag tag={"Health"} />
+          <Tag tag={"Sports"} />
+        </div>
       </div>
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const res = await fetch(`${server}/posts/`);
-  const blogs = await res.json();
-
-  return {
-    revalidate: 5,
-    props: {
-      blogs,
-    },
-  };
-};

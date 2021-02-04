@@ -49,6 +49,7 @@ export default function CategoryPost({ blogs, category }) {
                     pathname: `/posts/${blog.id}`,
                     query: { id: blog.id },
                   }}
+                  as={`/posts/${blog.id}`}
                 >
                   <h6
                     className={styles.post}

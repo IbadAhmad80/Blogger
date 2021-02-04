@@ -30,7 +30,7 @@ export default function SinlgePost({ allBlogs, blog, author, category }) {
           <div className="image">
             <style jsx>{`
               .image {
-                background-image: url(${"/assets/" + "news-5.jpg"});
+                background-image: url(${"/assets/" + "fisherman.jpg"});
                 height: 28rem;
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
