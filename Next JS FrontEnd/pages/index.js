@@ -38,14 +38,16 @@ export default function Home({ blogs }) {
         <CategoryPost blogs={blogs} category="technology" />
       </div>
       <div className={styles.more_blogs}>
-        {blogs.map((blog) => {
-          return (
+        {blogs.map((blog, index) => {
+          return index > 7 ? (
             <MoreBlogs
               title={blog.title}
               image={blog.image}
               key={blog.id}
               id={blog.id}
             />
+          ) : (
+            console.log("")
           );
         })}
       </div>

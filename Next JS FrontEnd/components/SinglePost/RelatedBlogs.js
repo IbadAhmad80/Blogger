@@ -1,10 +1,10 @@
-import styles from "../../styles/Home.module.scss";
+import styles from "../../styles/SinglePost.module.scss";
 import Carousel from "react-elastic-carousel";
 import Link from "next/Link";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 250, itemsToShow: 2 },
+  { width: 350, itemsToShow: 2 },
 ];
 
 // const computeTitle = (title) => {
@@ -22,22 +22,14 @@ const breakPoints = [
 //   );
 // };
 
-export default function CategoryPost({ blogs, category }) {
-  let posts = [];
-  blogs.map((blog) =>
-    blog.categories[0].name === category ? posts.push(blog) : console.log()
-  );
+export default function RelatedPost({ posts }) {
   return (
     <div>
-      <h5 className={styles.category_heading}>{category.toUpperCase()}</h5>
+      <h5 className={styles.category_heading}>Related Articles</h5>
       <div className={styles.category_container}>
         <Carousel breakPoints={breakPoints}>
           {posts.map((blog) => (
-            <span
-              style={{ marginRight: "3rem", marginLeft: "3rem" }}
-              className={styles.linear_container}
-              key={blog.id}
-            >
+            <span style={{}} className={styles.linear_container} key={blog.id}>
               <div
                 style={{
                   paddingTop: "2rem",
@@ -67,7 +59,7 @@ export default function CategoryPost({ blogs, category }) {
                   background-size: 100% 100%;
                   background-repeat: no-repeat;
                   height: 10rem;
-                  width: 20rem;
+                  width: 18rem;
                 }
               `}</style>
             </span>

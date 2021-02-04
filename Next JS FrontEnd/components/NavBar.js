@@ -73,7 +73,9 @@ export default function Navbar() {
               </Link>
               <h6>Paid Blogs</h6>
 
-              <h6>About</h6>
+              <Link href="/about">
+                <h6>About</h6>
+              </Link>
 
               <Link href="/contact">
                 <h6>Contact</h6>

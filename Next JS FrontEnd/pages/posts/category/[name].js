@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { server } from "../../config/index";
-import Styles from "../../styles/SinglePost.module.scss";
-import CategoriesContainer from "../../components/SinglePost/CategoriesContainer";
-import ReadMore from "../../components/HomePage/ReadMore";
-import RelatedPost from "../../components/SinglePost/RelatedBlogs";
-import Tag from "../../components/SinglePost/Tag";
+import { server } from "../../../config/index";
+import Styles from "../../../styles/SinglePost.module.scss";
+import CategoriesContainer from "../../../components/SinglePost/CategoriesContainer";
+import ReadMore from "../../../components/HomePage/ReadMore";
+import RelatedPost from "../../../components/SinglePost/RelatedBlogs";
+import Tag from "../../../components/SinglePost/Tag";
 
 export default function SinlgePost({ allBlogs, blog, author, category }) {
   const [queryData, setQueryData] = useState({
@@ -14,7 +14,6 @@ export default function SinlgePost({ allBlogs, blog, author, category }) {
     sameCategory: category,
   });
   useEffect(() => {
-    console.log("in useEffect");
     setQueryData({
       blog: blog,
       sameAuthor: author,
@@ -114,13 +113,13 @@ export default function SinlgePost({ allBlogs, blog, author, category }) {
 export const getStaticProps = async (context) => {
   const res = await fetch(`${server}/posts/`);
   const allBlogs = await res.json();
-  let blogData = await fetch(`${server}/posts/${context.params.id}`);
-  let blog = await blogData.json();
-  let author = allBlogs.filter((article) => article.author === blog.author);
+
   let sameCategory = await fetch(
-    `${server}/posts/category/${blog.categories[0].name}`
+    `${server}/posts/category/${context.params.name}`
   );
   let category = await sameCategory.json();
+  let blog = category[0];
+  let author = allBlogs.filter((article) => article.author === blog.author);
 
   return {
     revalidate: 5,
@@ -134,16 +133,13 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/posts/`);
-  const allBlogs = await res.json();
-  const ids = allBlogs.map((blog) => blog.id);
-  const paths = ids.map((id) => ({
-    params: {
-      id: id.toString(),
-    },
-  }));
   return {
-    paths,
+    paths: [
+      { params: { name: "sports" } },
+      { params: { name: "technology" } },
+      { params: { name: "health" } },
+      { params: { name: "entertainment" } },
+    ],
     fallback: false,
   };
 };
