@@ -13,7 +13,7 @@ export default function About({ blogs }) {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {" "}
           <h6 className={styles.popular_blogs_heading}>Popular logs</h6>
-          <h6 className={styles.tag_heading}>Read More</h6>
+          <h6 className={styles.tag_heading}>Read More About</h6>
         </div>
 
         <div style={{ display: "flex" }}>

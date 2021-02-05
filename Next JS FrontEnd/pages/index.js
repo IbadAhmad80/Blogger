@@ -17,7 +17,9 @@ export default function Home({ blogs }) {
             Welcome to <Link href="/">Blogger!</Link>
           </h1>
 
-          <button className={styles.post_button}>Explore Now</button>
+          <Link href="/about">
+            <h6 className={styles.post_button}>Explore Now</h6>
+          </Link>
         </main>
       </div>
       <FeaturedComponents blogs={blogs} />

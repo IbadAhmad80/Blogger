@@ -14,9 +14,10 @@
     align-items: center;
     .mail_logo,
     .phone_logo {
-      font-size: 2.2rem;
-      padding: 0.4rem 0.5rem 0 3rem;
+      font-size: 1.8rem;
+      padding: 0.4rem 0.4rem 0 3rem;
       font-weight: bolder;
+      font-family: $read-font;
     }
   }
 }

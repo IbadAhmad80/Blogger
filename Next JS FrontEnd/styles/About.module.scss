@@ -6,10 +6,11 @@
   padding: 2rem 11rem 4rem 11rem;
   .about_heading {
     text-align: center;
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     font-family: $read-font;
     font-weight: bolder;
     margin-bottom: 2rem;
+    margin-top: 1rem;
   }
   .about_grid {
     .image_center {
@@ -60,7 +61,7 @@
     }
   }
   .tag_heading {
-    margin: 0rem 10rem 0rem 0rem;
+    margin: 0rem 7rem 0rem 0rem;
     @extend .popular_blogs_heading;
   }
   .popular_blogs_heading {

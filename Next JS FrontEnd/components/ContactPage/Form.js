@@ -21,8 +21,9 @@ export default function Form() {
           type="text"
           value={formData.firstName}
           onChange={(e) => setData({ ...formData, firstName: e.target.value })}
+          pattern="[A-Za-z]{1,12}"
           required
-          placeholder="First Name"
+          placeholder="First Name (1-12 char)"
         />
 
         <input
@@ -30,8 +31,9 @@ export default function Form() {
           type="text"
           value={formData.lastName}
           onChange={(e) => setData({ ...formData, lastName: e.target.value })}
+          pattern="[A-Za-z]{1,12}"
           required
-          placeholder="Last Name"
+          placeholder="Last Name (1-12 char)"
         />
         <br />
         <input
@@ -44,11 +46,12 @@ export default function Form() {
         />
         <input
           className={styles.input_field}
-          type="number"
+          type="tel"
+          pattern="^\d{3}-\d{3}-\d{4}$"
           value={formData.contact}
           onChange={(e) => setData({ ...formData, contact: e.target.value })}
           required
-          placeholder="Phone No"
+          placeholder="Phone No (xxx-xxx-xxxx) "
         />
         <br />
         <textarea
@@ -56,8 +59,9 @@ export default function Form() {
           type="text"
           value={formData.message}
           onChange={(e) => setData({ ...formData, message: e.target.value })}
+          pattern="[A-Za-z]{1,300}"
           required
-          placeholder="Your Message"
+          placeholder="Your Message (>1)"
         />
         <input type="submit" value="Submit" className={styles.submit_btn} />
       </form>

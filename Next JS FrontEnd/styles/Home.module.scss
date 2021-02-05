@@ -27,14 +27,15 @@
     }
   }
 
-  button {
-    margin: 2rem 14rem;
+  h6 {
+    margin: 1rem 14rem;
     padding: 1rem 1rem;
     border: none;
     outline: none;
     font-size: 0.7rem;
     text-transform: uppercase;
     color: $primary-color;
+    background-color: white;
     font-weight: bold;
     transition: 0.8s;
     &:hover {
