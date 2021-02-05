@@ -1,8 +1,9 @@
 import React from "react";
 import Styles from "../../styles/Home.module.scss";
 import Link from "next/Link";
+import styles from "../../styles/About.module.scss";
 
-export default function MoreBlogs({ title, image, id }) {
+export default function MoreBlogs({ title, image, id, type }) {
   // const computeTitle = (title) => {
   //   const caption = title.split(" ").slice(0, 6);
   //   return (
@@ -45,7 +46,9 @@ export default function MoreBlogs({ title, image, id }) {
             as={`/posts/${id}`}
           >
             <h6
-              className={Styles.post_more_grid}
+              className={
+                type === "about" ? styles.post_more_grid : Styles.post_more_grid
+              }
               style={{
                 backgroundImage:
                   "linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)",
