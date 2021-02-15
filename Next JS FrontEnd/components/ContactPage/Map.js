@@ -2,25 +2,23 @@ import { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 export default function Map({ locations }) {
+  // console.log(process.env.NEXT_PUBLIC_MPBOX_SECRET_KEY);
   const [viewport, setViewport] = useState({
     width: "87%",
     height: "100%",
     // The latitude and longitude of the center of London
-    latitude: 51.5074,
-    longitude: -0.1278,
-    // latitude: 31.582045,
-    // longitude: 74.329376,
+    // latitude: 51.5074,
+    // longitude: -0.1278,
+    latitude: 31.582045,
+    longitude: 74.329376,
     zoom: 10,
   });
   const [selectLocation, setSelectedLocation] = useState({});
 
-  const access_token =
-    "pk.eyJ1IjoiaWJhZGFobWFkIiwiYSI6ImNra3JzNWt2ajBsOXQyb282YTkzNHZic2cifQ.Axi1cRU6bZqpLkvlduR9Cg";
-
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/mapbox/streets-v11"
-      mapboxApiAccessToken={access_token}
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MPBOX_SECRET_KEY}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >

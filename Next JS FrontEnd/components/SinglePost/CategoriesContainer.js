@@ -20,7 +20,7 @@ export default function CategoriesContainer({ blogs }) {
               key={blog.id}
             />
           ) : (
-            console.log("")
+            ""
           );
         })}
       {blogs &&
@@ -35,7 +35,7 @@ export default function CategoriesContainer({ blogs }) {
               key={blog.id}
             />
           ) : (
-            console.log("")
+            ""
           );
         })}
     </div>

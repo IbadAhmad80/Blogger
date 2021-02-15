@@ -25,7 +25,7 @@ const breakPoints = [
 export default function CategoryPost({ blogs, category }) {
   let posts = [];
   blogs.map((blog) =>
-    blog.categories[0].name === category ? posts.push(blog) : console.log()
+    blog.categories[0].name === category ? posts.push(blog) : ""
   );
   return (
     <div>

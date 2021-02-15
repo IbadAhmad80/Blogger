@@ -31,6 +31,15 @@
     "image": {
       "type": "string",
       "required": true
+    },
+    "images": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

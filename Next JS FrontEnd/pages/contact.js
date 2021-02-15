@@ -8,10 +8,7 @@ const Map = dynamic(() => import("../components/ContactPage/Map"), {
   loading: () => "Loading...",
   ssr: false,
 });
-
-const access_token =
-  "pk.eyJ1IjoiaWJhZGFobWFkIiwiYSI6ImNra3JzNWt2ajBsOXQyb282YTkzNHZic2cifQ.Axi1cRU6bZqpLkvlduR9Cg";
-const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/greggs.json?access_token=${access_token}&bbox=-0.227654%2C51.464102%2C0.060737%2C51.553421&limit=10`;
+const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/greggs.json?access_token=${process.env.NEXT_PUBLIC_MPBOX_SECRET_KEY}&bbox=-0.227654%2C51.464102%2C0.060737%2C51.553421&limit=10`;
 // import ReadMore from "../components/HomePage/ReadMore";
 export default function Contact() {
   const [locations, setLocations] = useState([]);
@@ -29,7 +26,7 @@ export default function Contact() {
     fetchLocations();
   }, []);
   return (
-    <div>
+    <div style={{ "overflow-x": "hidden" }}>
       <div style={{ margin: "4rem 4rem" }}>
         <div>
           <Form />
@@ -43,7 +40,7 @@ export default function Contact() {
       </div>
       <div
         style={{
-          margin: "6rem 22rem 4rem 6rem",
+          margin: "6rem 22rem 4rem 5.5rem",
           height: "45rem",
           width: "30rem",
         }}

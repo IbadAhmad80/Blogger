@@ -48,7 +48,7 @@ export default function Home({ blogs }) {
               id={blog.id}
             />
           ) : (
-            console.log("")
+            ""
           );
         })}
       </div>

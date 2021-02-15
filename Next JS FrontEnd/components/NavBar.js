@@ -1,3 +1,4 @@
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import navBarStyles from "../styles/NavBar.module.scss";
 import { MdMail, MdPhoneInTalk } from "react-icons/md";
@@ -6,8 +7,89 @@ import { GrTwitter } from "react-icons/gr";
 import { AiFillYoutube } from "react-icons/ai";
 import { FiInstagram } from "react-icons/fi";
 import Link from "next/link";
+import Cookie from "js-cookie";
+import axios from "axios";
+import { server } from "../config/index";
+import { withStyles } from "@material-ui/core/styles";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import { AiFillCaretDown } from "react-icons/ai";
+
+const StyledMenu = withStyles({
+  paper: {
+    border: "1px solid #d3d4d5",
+    color: "white",
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles(() => ({
+  root: {
+    "&:focus": {
+      backgroundColor: "gray",
+
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: "white",
+      },
+    },
+  },
+}))(MenuItem);
 
 export default function Navbar() {
+  const [username, setUsername] = React.useState("");
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  console.log("in navbar");
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  React.useEffect(() => {
+    if (Cookie.get("token")) {
+      getUser(Cookie.get("token")).then((res) => {
+        setUsername(res.data.username);
+      });
+    }
+  });
+
+  const getUser = async (token) => {
+    // authenticate the token on the server and place set user object
+    try {
+      let res = await axios.get(`${server}/users/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res;
+    } catch (err) {
+      console.log("Error during the Authentication :", err);
+    }
+  };
+
+  const logOut = () => {
+    //remove token and user cookie
+    Cookie.remove("token");
+    delete window.__user;
+    handleClose();
+    setUsername("");
+  };
   return (
     <>
       <div className={navBarStyles.top_bar}>
@@ -23,6 +105,46 @@ export default function Navbar() {
           </span>
           <span>+012 345 6789</span>
         </div>
+        {username !== "" ? (
+          <div className={navBarStyles.contact_container}>
+            <span
+              className={
+                username === ""
+                  ? navBarStyles.no_style
+                  : navBarStyles.profile_pic
+              }
+            >
+              {username.charAt(0).toUpperCase()}
+            </span>
+            <span
+              className={
+                username === ""
+                  ? navBarStyles.no_style
+                  : navBarStyles.profile_name
+              }
+              onClick={handleClick}
+            >
+              <AiFillCaretDown />
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
+
+        <StyledMenu
+          id="customized-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <StyledMenuItem>
+            <ListItemText secondary={username} />
+          </StyledMenuItem>
+          <StyledMenuItem>
+            <ListItemText secondary=" Log Out " onClick={logOut} />
+          </StyledMenuItem>
+        </StyledMenu>
       </div>
 
       <div className={navBarStyles.navbar_container}>
@@ -71,7 +193,9 @@ export default function Navbar() {
               <Link href="/">
                 <h6>Home</h6>
               </Link>
-              <h6>Create Post</h6>
+              <Link href="/create_post">
+                <h6>Create Post</h6>
+              </Link>
 
               <Link href="/about">
                 <h6>About</h6>

@@ -2,8 +2,8 @@
 
 .top_bar {
   display: flex;
-  padding: 0rem 2rem;
-  justify-content: center;
+  padding: 0rem 0rem;
+  justify-content: space-around;
   align-items: center;
   color: rgb(149, 12, 12);
   border-bottom: 1px solid black;
@@ -19,6 +19,22 @@
       font-weight: bolder;
       font-family: $read-font;
     }
+  }
+  .profile_pic {
+    padding: 0.5rem 1rem;
+    background-color: brown;
+    color: white;
+    border-radius: 100%;
+    margin-right: 0.3rem;
+  }
+  .no_style {
+    display: hidden;
+  }
+  .profile_name {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: black;
+    cursor: pointer;
   }
 }
 .navbar_container {

@@ -66,7 +66,7 @@ export default function FullWidthTabs({ blogs }) {
   blogs.map((blog) =>
     blog.categories[0].name === "entertainment"
       ? entertainmentBlogs.push(blog)
-      : console.log()
+      : ""
   );
 
   // console.log(
