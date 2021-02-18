@@ -17,7 +17,7 @@ export default async (req, res) => {
     ],
     mode: "payment",
     success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${req.headers.origin}/create_post`,
+    cancel_url: `${req.headers.origin}/`,
   });
 
   res.status(200).json({ sessionId: session.id });

@@ -1,25 +1,33 @@
 import React from "react";
-import Cookie from "js-cookie";
 import axios from "axios";
 import { server } from "../config/index";
 import * as cookie from "cookie";
+import Cookie from "js-cookie";
 import StripeGateway from "../components/CreatePost/StrapiGateway";
+import CreateForm from "../components/CreatePost/CreateForm";
+import SignIn from "../components/SinglePost/SignIn";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function CreatePost({ user }) {
+  const token = useSelector((state) => state.token);
+  console.log("role is", user.role.name);
   return (
     <>
       <div>
-        {Cookie.get("token") ? "You are already signed in" : "Sign in First"}
-      </div>
-      {user && user.role ? (
-        user.role.name === "Public" ? (
-          <StripeGateway user={user} />
+        {token ? (
+          user && user.role ? (
+            user.role.name === "Public" ? (
+              <StripeGateway user={user} />
+            ) : (
+              <CreateForm />
+            )
+          ) : (
+            ""
+          )
         ) : (
-          "You are already authorized"
-        )
-      ) : (
-        ""
-      )}
+          <SignIn type="membership" />
+        )}
+      </div>
     </>
   );
 }

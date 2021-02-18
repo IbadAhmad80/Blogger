@@ -7,37 +7,6 @@ import { server } from "../config/index";
 import axios from "axios";
 
 export default function About({ blogs }) {
-  // const [file, setFile] = useState(null);
-  // const [error, setError] = useState(null);
-  // const types = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
-
-  // const handleChange = (e) => {
-  //   let selected = e.target.files[0];
-  //   if (selected && types.includes(selected.type)) {
-  //     setFile(selected);
-  //     setError("");
-  //   } else {
-  //     setFile(null);
-  //     setError("Please select an image file (png ,jpeg , webp or jpg)");
-  //   }
-  // };
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-  //   console.log("file ", file);
-
-  //   const data = new FormData();
-  //   data.append("files", file);
-  //   console.log("data is", data.entries().next());
-
-  //   const res = await axios
-  //     .post(`${server}/upload`, data)
-  //     .then((response) => {
-  //       console.log("response :", response);
-  //     })
-  //     .catch((err) => {
-  //       console.log("", err);
-  //     });
-  // };
   return (
     <>
       {/* <form onSubmit={submitHandler}>

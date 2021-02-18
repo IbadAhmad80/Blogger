@@ -75,8 +75,8 @@
 .post_title_grid {
   @include post_cred(1rem);
   padding: 0.4rem 0.5rem 0.4rem 0.5rem;
-  margin: 0.8rem 0rem 0rem 0rem;
-  border: 1px solid maroon;
+  margin: 0.9rem 0rem 0rem 0rem;
+  border: none;
   font-weight: lighter;
   height: 3.4rem;
   font-weight: bolder;
@@ -170,7 +170,7 @@
       color: white;
       height: 3.6rem;
       font-weight: bolder;
-      border: 1px solid maroon;
+      border: none;
       cursor: pointer;
     }
   }
@@ -179,19 +179,19 @@
 .more_blogs {
   margin: 12rem 3rem 3rem 3rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
-  grid-template-rows: 10rem 10rem 10rem;
+  grid-template-rows: 15rem 15rem 15rem 15rem 15rem 15rem 15rem 15rem;
   .more_container {
-    border: 1px solid gray;
     .post_more_grid {
       @extend .post_title_grid;
       margin: 0.71rem 0rem 0.4rem 0rem;
-      padding: 0.4rem 0.6rem 0.8rem 0.6rem;
+      padding: 1rem 0.8rem 1rem 0.8rem;
       height: 3.5rem;
       font-weight: bolder;
       cursor: pointer;
+      border: none;
     }
   }
 }

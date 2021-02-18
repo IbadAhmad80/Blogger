@@ -14,7 +14,6 @@ export default function SinlgePost({ allBlogs, blog, author, category, data }) {
   const router = useRouter();
   const [id, setID] = useState(-1);
   const [likes, setLikes] = useState(blog.likes);
-  const [isProfile, setIsProfile] = useState(false);
 
   const [queryData, setQueryData] = useState({
     blog: blog,
@@ -116,11 +115,7 @@ export default function SinlgePost({ allBlogs, blog, author, category, data }) {
               Like ( {likes} )
             </button>
             <div>
-              <SignIn
-                blog_id={blog.id}
-                appendComment={appendComment}
-                profile={setIsProfile}
-              />
+              <SignIn blog_id={blog.id} appendComment={appendComment} />
             </div>
             <div>
               {queryData.comments &&

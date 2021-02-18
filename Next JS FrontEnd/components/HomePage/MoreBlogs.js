@@ -4,22 +4,24 @@ import Link from "next/Link";
 import styles from "../../styles/About.module.scss";
 
 export default function MoreBlogs({ title, image, id, type }) {
-  // const computeTitle = (title) => {
-  //   const caption = title.split(" ").slice(0, 6);
-  //   return (
-  //     caption[0] +
-  //     " " +
-  //     caption[1] +
-  //     " " +
-  //     caption[2] +
-  //     " " +
-  //     caption[3] +
-  //     " " +
-  //     caption[4] +
-  //     " " +
-  //     caption[5]
-  //   );
-  // };
+  const computeTitle = (title) => {
+    const caption = title.split(" ").slice(0, 6);
+    return (
+      caption[0] +
+      " " +
+      caption[1] +
+      " " +
+      caption[2] +
+      " " +
+      caption[3] +
+      " " +
+      caption[4] +
+      " " +
+      caption[5] +
+      " " +
+      caption[6]
+    );
+  };
 
   return (
     <div className={Styles.more_container}>
@@ -29,12 +31,12 @@ export default function MoreBlogs({ title, image, id, type }) {
             background-image: url(${"/assets/" + image});
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            height: 10.25rem;
+            height: 15.25rem;
           }
         `}</style>
         <div
           style={{
-            paddingTop: "6rem",
+            paddingTop: "11rem",
           }}
           className="container"
         >

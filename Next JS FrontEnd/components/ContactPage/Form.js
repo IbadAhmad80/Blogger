@@ -21,7 +21,6 @@ export default function Form() {
           type="text"
           value={formData.firstName}
           onChange={(e) => setData({ ...formData, firstName: e.target.value })}
-          pattern="[A-Za-z]{1,12}"
           required
           placeholder="First Name (1-12 char)"
         />

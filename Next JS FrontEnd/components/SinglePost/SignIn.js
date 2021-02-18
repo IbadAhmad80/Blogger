@@ -10,15 +10,18 @@ import SignUp from "./SignUp";
 import axios from "axios";
 import { server } from "../../config/index";
 import Cookie from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn } from "../redux/actions";
 
-export default function SignIn({ blog_id, appendComment, profile }) {
+export default function SignIn({ blog_id, appendComment, type }) {
+  const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
     email: "",
   });
-
+  const token = useSelector((state) => state.token);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -28,7 +31,7 @@ export default function SignIn({ blog_id, appendComment, profile }) {
   };
 
   const publishComment = async () => {
-    if (!Cookie.get("token")) {
+    if (!token) {
       handleClickOpen();
       return;
     }
@@ -44,11 +47,12 @@ export default function SignIn({ blog_id, appendComment, profile }) {
         comment: comment,
       });
       // console.log("response is :", res);
-      appendComment({
-        blog_id: blog_id,
-        publisher: data.username,
-        comment: comment,
-      });
+      comment &&
+        appendComment({
+          blog_id: blog_id,
+          publisher: data.username,
+          comment: comment,
+        });
     } catch (err) {
       alert(err);
       console.log("error while publishing the comment :", err);
@@ -67,8 +71,8 @@ export default function SignIn({ blog_id, appendComment, profile }) {
       });
       Cookie.set("token", res.data.jwt);
       setFormData({ password: "", email: "" });
+      dispatch(signIn(res.data.jwt));
       handleClose();
-      profile(true);
     } catch (err) {
       console.log("error in sign in section :", res);
       // alert(res.data.message.messages[0].message);
@@ -85,15 +89,18 @@ export default function SignIn({ blog_id, appendComment, profile }) {
             margin: "2rem 4rem",
           }}
         >
-          <input
-            type="text"
-            required
-            value={comment}
-            placeholder=" your comment"
-            onChange={(e) => setComment(e.target.value)}
-          ></input>
+          {!type && (
+            <input
+              type="text"
+              required
+              value={comment}
+              placeholder=" your comment"
+              onChange={(e) => setComment(e.target.value)}
+            ></input>
+          )}
+
           <Button variant="outlined" color="primary" onClick={publishComment}>
-            Comment
+            {token ? "Comment" : "Sign In"}
           </Button>
         </div>
 
@@ -114,7 +121,7 @@ export default function SignIn({ blog_id, appendComment, profile }) {
               style={{ marginTop: "1rem" }}
               margin="dense"
               value={formData.email}
-              label="Email Address"
+              label="Email Address/Username "
               type="email"
               required
               fullWidth

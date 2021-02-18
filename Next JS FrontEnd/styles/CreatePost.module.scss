@@ -1,0 +1,55 @@
+@import "./config";
+.mainGrid {
+  display: flex;
+  justify-content: space-around;
+  .contact_form {
+    padding: 3rem 0rem;
+
+    .input_field {
+      height: 3.2rem;
+      width: 20rem;
+      padding: 1rem;
+      color: gray;
+      margin: 1rem 6rem;
+      outline: none;
+      border: 1px solid black;
+      border-radius: 0px;
+      transition: 0.2s;
+      &:focus {
+        border: 2px solid green;
+        width: 22.1rem;
+        margin: 1rem 5rem;
+        color: black;
+        border-radius: 3px;
+      }
+    }
+
+    .submit_btn {
+      margin: 2rem 13rem 1rem 13rem;
+      padding: 0.7rem 1rem;
+      outline: none;
+      border: 1px solid black;
+      background-color: transparent;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.03cm;
+      font-family: $secondary-font;
+      transition: 0.8s;
+      &:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+  .image_flex {
+    margin: 3rem 3rem 0rem 0rem;
+    padding: 0 3rem 0 0;
+  }
+}
+.contact_heading {
+  margin: 2rem 0rem 0rem 0rem;
+  text-align: center;
+  font-family: $read-font;
+  font-size: 2.3rem;
+}

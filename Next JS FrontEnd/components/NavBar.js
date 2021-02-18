@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn, signOut } from "../components/redux/actions";
 import Grid from "@material-ui/core/Grid";
 import navBarStyles from "../styles/NavBar.module.scss";
 import { MdMail, MdPhoneInTalk } from "react-icons/md";
@@ -39,20 +41,19 @@ const StyledMenu = withStyles({
 
 const StyledMenuItem = withStyles(() => ({
   root: {
+    color: "white",
     "&:focus": {
-      backgroundColor: "gray",
-
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: "white",
-      },
+      backgroundColor: "#d9e6f2",
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {},
     },
   },
 }))(MenuItem);
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token);
   const [username, setUsername] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
-  console.log("in navbar");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -66,6 +67,7 @@ export default function Navbar() {
       getUser(Cookie.get("token")).then((res) => {
         setUsername(res.data.username);
       });
+      dispatch(signIn(Cookie.get("token")));
     }
   });
 
@@ -87,6 +89,7 @@ export default function Navbar() {
     //remove token and user cookie
     Cookie.remove("token");
     delete window.__user;
+    dispatch(signOut());
     handleClose();
     setUsername("");
   };
