@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styles from "../../styles/CreatePost.module.scss";
 import Image from "next/image";
+import Cookie from "js-cookie";
+import axios from "axios";
+import { server } from "../../config";
 
 export default function CreateForm() {
-  const [file, setFile] = useState(null);
-  const [error, setError] = useState(null);
   const [formData, setData] = useState({
     title: "",
     category: "",
@@ -12,33 +13,71 @@ export default function CreateForm() {
     image: null,
   });
 
-  const handleChange = (e) => {
-    let selected = e.target.files[0];
-    if (selected && types.includes(selected.type)) {
-      setData({ ...formData, image: selected });
-      setError("");
-    } else {
-      setFile(null);
-      setError("Please select an image file (png ,jpeg , webp or jpg)");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    e.preventDefault();
+    const data = new FormData();
+    data.append("files", formData.image);
+    try {
+      const res = await axios.post(`${server}/upload`, data);
+      const token = Cookie.get("token");
+      // console.log("response after uplaoding the image is:", res.data);
+      const post_res = await axios.post(
+        `${server}/posts`,
+        {
+          title: formData.title,
+          author: formData.author,
+          image: "upload",
+          images: res.data[0].url,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const category_res = await axios.get(
+        `${server}/categories`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const ids = getAllPosts(category_res.data);
+      await axios.put(
+        `${server}/categories/${ids.category_id}`,
+        {
+          name: formData.category,
+          posts: [...ids.blog_ids, post_res.data.id],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("post is been uploaded successfully");
+      setData({ title: "", author: "", category: "", image: null });
+    } catch (error) {
+      console.log("", error);
     }
   };
 
-  // e.preventDefault();
-  // const data = new FormData();
-  // data.append("files", file);
-  // // console.log("data is", data.entries().next());
-  // const res = await axios
-  //   .post(`${server}/upload`, data)
-  //   .then((response) => {
-  //     // console.log("response :", response);
-  //   })
-  //   .catch((err) => {
-  //     console.log("", err);
-  //   });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+  const getAllPosts = (data) => {
+    let ids = [];
+    let id;
+    data.map((post) => {
+      post.name === formData.category
+        ? post.posts.map((blog) => {
+            id = post.id;
+            ids.push(blog.id);
+          })
+        : "";
+    });
+    return { blog_ids: ids, category_id: id };
   };
   return (
     <>
@@ -52,28 +91,28 @@ export default function CreateForm() {
             <input
               className={styles.input_field}
               type="text"
-              pattern="[A-Za-z0-9_., ]{1,200}"
+              pattern="[A-Za-z0-9_.,? ]{10,200}"
               value={formData.title}
               onChange={(e) => setData({ ...formData, title: e.target.value })}
               required
-              placeholder="Post title"
+              placeholder="Post title ( 10-200 char )"
             />
             <br />
 
             <input
               className={styles.input_field}
               type="text"
-              pattern="[A-Za-z. ]{1,100}"
+              pattern="[A-Za-z. ]{5,100}"
               value={formData.author}
               onChange={(e) => setData({ ...formData, author: e.target.value })}
               required
-              placeholder="Post Author"
+              placeholder="Post Author ( 5-100 char )"
             />
             <br />
             <input
               className={styles.input_field}
               type="text"
-              // pattern="[A-Za-z]{1,20}"
+              pattern="[A-Za-z]{5,20}"
               value={formData.category}
               onChange={(e) =>
                 setData({ ...formData, category: e.target.value })
@@ -86,6 +125,7 @@ export default function CreateForm() {
               className={styles.input_field}
               type="file"
               // value={formData.image}
+              required
               onChange={(e) =>
                 setData({ ...formData, image: e.target.files[0] })
               }

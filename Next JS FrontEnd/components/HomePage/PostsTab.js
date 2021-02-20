@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FullWidthTabs({ blogs }) {
+  // console.log("blogs are", blogs);
   const readMore = blogs.slice(-3);
   let mostPopular = blogs;
   let entertainmentBlogs = [];
@@ -113,6 +114,7 @@ export default function FullWidthTabs({ blogs }) {
               <SwitchPost
                 title={blog.title}
                 image={blog.image}
+                images={blog.images}
                 key={blog.id}
                 id={blog.id}
               />
@@ -128,6 +130,7 @@ export default function FullWidthTabs({ blogs }) {
                 <SwitchPost
                   title={blog.title}
                   image={blog.image}
+                  images={blog.images}
                   key={blog.id}
                   id={blog.id}
                 />
@@ -140,6 +143,7 @@ export default function FullWidthTabs({ blogs }) {
               <SwitchPost
                 title={blog.title}
                 image={blog.image}
+                images={blog.images}
                 key={blog.id}
                 id={blog.id}
               />

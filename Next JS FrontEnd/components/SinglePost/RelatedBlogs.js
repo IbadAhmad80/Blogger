@@ -23,6 +23,13 @@ const breakPoints = [
 // };
 
 export default function RelatedPost({ posts }) {
+  const getImage = ({ image, images }) => {
+    let img =
+      image === "upload"
+        ? "http://localhost:1337" + images
+        : "/assets/" + image;
+    return img;
+  };
   return (
     <div>
       <h5 className={styles.category_heading}>Related Articles</h5>
@@ -56,7 +63,7 @@ export default function RelatedPost({ posts }) {
               </div>
               <style jsx>{`
                 span {
-                  background-image: url(${"/assets/" + blog.image});
+                  background-image: url(${getImage(blog)});
                   background-size: 100% 100%;
                   background-repeat: no-repeat;
                   height: 10rem;

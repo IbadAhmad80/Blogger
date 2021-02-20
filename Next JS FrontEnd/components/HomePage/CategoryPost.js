@@ -7,22 +7,14 @@ const breakPoints = [
   { width: 250, itemsToShow: 2 },
 ];
 
-// const computeTitle = (title) => {
-//   const caption = title.split(" ").slice(0, 5);
-//   return (
-//     caption[0] +
-//     " " +
-//     caption[1] +
-//     " " +
-//     caption[2] +
-//     " " +
-//     caption[3] +
-//     " " +
-//     caption[4]
-//   );
-// };
-
 export default function CategoryPost({ blogs, category }) {
+  const getImage = ({ image, images }) => {
+    let img =
+      image === "upload"
+        ? "http://localhost:1337" + images
+        : "/assets/" + image;
+    return img;
+  };
   let posts = [];
   blogs.map((blog) =>
     blog.categories[0].name === category ? posts.push(blog) : ""
@@ -64,7 +56,7 @@ export default function CategoryPost({ blogs, category }) {
               </div>
               <style jsx>{`
                 span {
-                  background-image: url(${"/assets/" + blog.image});
+                  background-image: url(${getImage(blog)});
                   background-size: 100% 100%;
                   background-repeat: no-repeat;
                   height: 10rem;

@@ -3,7 +3,10 @@ import Styles from "../../styles/Home.module.scss";
 import Link from "next/Link";
 import styles from "../../styles/About.module.scss";
 
-export default function MoreBlogs({ title, image, id, type }) {
+export default function MoreBlogs({ title, image, id, type, images }) {
+  let img =
+    image === "upload" ? "http://localhost:1337" + images : "/assets/" + image;
+
   const computeTitle = (title) => {
     const caption = title.split(" ").slice(0, 6);
     return (
@@ -28,7 +31,7 @@ export default function MoreBlogs({ title, image, id, type }) {
       <div className="post-pic">
         <style jsx>{`
           .post-pic {
-            background-image: url(${"/assets/" + image});
+            background-image: url(${img});
             background-size: 100% 100%;
             background-repeat: no-repeat;
             height: 15.25rem;

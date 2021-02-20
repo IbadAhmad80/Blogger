@@ -16,6 +16,7 @@ export default function FeaturedComponents({ blogs }) {
             <FeaturedPostGrid
               title={blogs[1].title}
               image={blogs[1].image}
+              images={blogs[1].images}
               id={blogs[1].id}
             />
           </div>
@@ -23,6 +24,7 @@ export default function FeaturedComponents({ blogs }) {
             <FeaturedPostGrid
               title={blogs[2].title}
               image={blogs[2].image}
+              images={blogs[2].images}
               id={blogs[2].id}
             />
           </div>
@@ -30,6 +32,7 @@ export default function FeaturedComponents({ blogs }) {
             <FeaturedPostGrid
               title={blogs[3].title}
               image={blogs[3].image}
+              images={blogs[3].images}
               id={blogs[3].id}
             />
           </div>
@@ -37,6 +40,7 @@ export default function FeaturedComponents({ blogs }) {
             <FeaturedPostGrid
               title={blogs[4].title}
               image={blogs[4].image}
+              images={blogs[4].images}
               id={blogs[4].id}
             />
           </div>

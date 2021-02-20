@@ -32,6 +32,7 @@ export default function SinlgePost({ allBlogs, blog, author, category, data }) {
       sameCategory: category,
       comments: data,
     });
+    setLikes(blog.likes);
   }, [blog]);
   //handling likes option
   useEffect(() => {

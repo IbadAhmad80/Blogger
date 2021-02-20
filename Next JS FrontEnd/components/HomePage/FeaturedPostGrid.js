@@ -2,14 +2,22 @@ import React from "react";
 import Link from "next/Link";
 import Styles from "../../styles/Home.module.scss";
 
-export default function FeaturedPostGrid({ title, image, blogs, id }) {
+export default function FeaturedPostGrid({ title, image, images, id }) {
+  let img =
+    image === "upload" ? "http://localhost:1337" + images : "/assets/" + image;
+  // console.log(title, image);
   return (
     <div>
       <div className={Styles.linear_container}>
-        <div className="post-pic">
+        <div
+          className="post-pic"
+          onClick={() =>
+            console.log("my title is", title, " and image is ", image)
+          }
+        >
           <style jsx>{`
             .post-pic {
-              background-image: url(${"/assets/" + image});
+              background-image: url(${img});
               background-size: 100% 100%;
               background-repeat: no-repeat;
               height: 10.25rem;

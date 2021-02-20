@@ -7,6 +7,7 @@
     margin-right: 3rem;
     .single_post_title {
       @include single_post(2rem 0rem 1rem 0rem, 2rem, 0cm);
+      word-wrap: break-word;
     }
     .single_post_caption {
       font-size: 1.1rem;
@@ -41,6 +42,7 @@
           text-align: center;
           margin: 4.6rem 0rem 0rem 0rem;
           padding: 0.4rem 1.3rem 0rem 0.9rem;
+          word-wrap: break-word;
           color: white;
           height: 3.6rem;
           font-weight: bolder;

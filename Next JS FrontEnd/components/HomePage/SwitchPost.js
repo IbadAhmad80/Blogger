@@ -2,7 +2,10 @@ import React from "react";
 import Styles from "../../styles/Home.module.scss";
 import Link from "next/Link";
 import styles from "../../styles/SinglePost.module.scss";
-export default function SwitchPost({ title, image, id, type }) {
+export default function SwitchPost({ title, image, images, id, type }) {
+  let img =
+    image === "upload" ? "http://localhost:1337" + images : "/assets/" + image;
+
   return (
     <>
       <div
@@ -22,7 +25,7 @@ export default function SwitchPost({ title, image, id, type }) {
           <style jsx>
             {`
               span {
-                background-image: url(${"/assets/" + image});
+                background-image: url(${img});
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
               }

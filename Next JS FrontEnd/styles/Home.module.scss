@@ -72,6 +72,7 @@
   @include post_cred(2rem);
   padding: 14rem 1.2rem 1rem 1.2rem;
   cursor: pointer;
+  word-wrap: break-word;
 }
 .post_title_grid {
   @include post_cred(1rem);
@@ -101,6 +102,7 @@
       .switch_post_caption {
         @include switch_structure(0rem 0rem 0rem 1rem, 30rem, 1.6rem 1rem);
         cursor: pointer;
+        word-wrap: break-word;
       }
     }
   }
@@ -173,6 +175,7 @@
       font-weight: bolder;
       border: none;
       cursor: pointer;
+      word-wrap: break-word;
     }
   }
 }
@@ -193,6 +196,7 @@
       font-weight: bolder;
       cursor: pointer;
       border: none;
+      word-wrap: break-word;
     }
   }
 }
@@ -239,7 +243,7 @@
   color: rgb(204, 194, 194);
   padding: 8px 10px;
   position: absolute;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   // background-color: rgb(39, 37, 37);
   left: 0px;
   font-size: 1.3em;
