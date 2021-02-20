@@ -12,8 +12,9 @@ import { server } from "../../config/index";
 import Cookie from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../redux/actions";
+import styles from "../../styles/SinglePost.module.scss";
 
-export default function SignIn({ blog_id, appendComment, type }) {
+export default function SignIn({ blog_id, appendComment, type, isAccount }) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState("");
   const [open, setOpen] = useState(false);
@@ -53,6 +54,7 @@ export default function SignIn({ blog_id, appendComment, type }) {
           publisher: data.username,
           comment: comment,
         });
+      setComment("");
     } catch (err) {
       alert(err);
       console.log("error while publishing the comment :", err);
@@ -73,6 +75,8 @@ export default function SignIn({ blog_id, appendComment, type }) {
       setFormData({ password: "", email: "" });
       dispatch(signIn(res.data.jwt));
       handleClose();
+      console.log(res.data);
+      isAccount && isAccount(res.data.user.role.name);
     } catch (err) {
       console.log("error in sign in section :", res);
       // alert(res.data.message.messages[0].message);
@@ -82,24 +86,36 @@ export default function SignIn({ blog_id, appendComment, type }) {
   return (
     <div>
       <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            margin: "2rem 4rem",
-          }}
-        >
+        <div>
           {!type && (
-            <input
-              type="text"
-              required
-              value={comment}
-              placeholder=" your comment"
-              onChange={(e) => setComment(e.target.value)}
-            ></input>
+            <div className={styles.comment_section}>
+              <span className={styles.leave_reply}>Leave a Reply</span>
+              <br />
+              <span className={styles.message}>Message</span>
+              <br />
+              <input
+                className={styles.comment_field}
+                type="text"
+                required
+                value={comment}
+                placeholder=" Comment ..."
+                onChange={(e) => setComment(e.target.value)}
+              ></input>
+            </div>
           )}
-
-          <Button variant="outlined" color="primary" onClick={publishComment}>
+          <br /> <br />
+          {type && type === "membership" && (
+            <div className={styles.sign_in_prompt}>
+              Have to Sign in first in order to create a Blog
+            </div>
+          )}
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={publishComment}
+            className={styles.comment_button}
+            style={type && { margin: "1rem 39rem 2rem 39rem", width: "5.5rem" }}
+          >
             {token ? "Comment" : "Sign In"}
           </Button>
         </div>
@@ -115,13 +131,14 @@ export default function SignIn({ blog_id, appendComment, type }) {
               <SignUp
                 handleClose={handleClose}
                 handleOpenSignIn={handleClickOpen}
+                isAccount={isAccount}
               />
             </DialogContentText>
             <TextField
               style={{ marginTop: "1rem" }}
               margin="dense"
               value={formData.email}
-              label="Email Address/Username "
+              label="Email Address / Username "
               type="email"
               required
               fullWidth

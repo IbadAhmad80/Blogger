@@ -50,17 +50,101 @@
       }
     }
     .comments {
-      display: flex;
-      justify-content: space-around;
-      .comment_maker {
-        padding: 0.5rem 1rem;
+      justify-content: space-between;
+      margin: 1rem 0rem 1rem 3rem;
+      // border: 1px solid black;
+      padding: 1rem 1rem;
+      background-color: rgb(238, 238, 245);
+      .comment_maker_pic {
+        padding: 0.4rem 0.8rem;
         text-align: center;
         background-color: brown;
         color: white;
         border-radius: 110%;
-        width: 2.2rem;
-        margin-right: 1rem;
+        max-width: 2.2rem;
+        max-height: 5.5vh;
       }
+      .comment_maker_name {
+        font-size: 1rem;
+        font-family: $read-font;
+        padding: 0.7rem 1rem;
+        font-weight: bolder;
+      }
+      .comment_text {
+        margin: 0.7rem 0 0 0rem;
+        padding: 0.7rem 0rem 0 0;
+        font-size: 1rem;
+        font-family: $read-font;
+        color: rgb(54, 51, 51);
+        width: 53vw;
+        word-wrap: break-word;
+      }
+    }
+    .like_flex {
+      border-radius: 15px;
+      border: 1px solid rgb(58, 56, 56);
+      padding: 1.2rem 1rem 0.7rem 1rem;
+      display: flex;
+      margin: -5rem 3rem 0rem 3rem;
+      transition: 0.4s;
+      justify-content: space-around;
+      .like_heading {
+        flex: 12;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: $read-font;
+      }
+      .like_logo {
+        flex: 1;
+        margin-top: -0.8rem;
+        font-size: 2.5rem;
+        &:hover {
+          color: rgb(11, 112, 28);
+          cursor: pointer;
+        }
+      }
+      .like_amount {
+        flex: 0.2;
+        font-size: 0.9rem;
+        color: gray;
+      }
+      &:hover {
+        background-color: rgb(238, 238, 245);
+        color: rgb(0, 0, 0);
+      }
+    }
+    .comment_section {
+      margin: 4rem 3rem 1.2rem 3rem;
+      .leave_reply {
+        margin: 1rem 0rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        font-family: $read-font;
+      }
+      .message {
+        font-size: 1.2rem;
+        font-family: $read-font;
+        font-weight: bold;
+        margin: 1.5rem 0rem 0.5rem 0rem;
+      }
+      .comment_field {
+        margin: 0.5rem 0rem 0rem 0rem;
+        height: 7rem;
+        outline: none;
+        font-family: $read-font;
+        color: gray;
+        font-weight: bold;
+        width: 25rem;
+        padding: 0rem 1rem;
+      }
+    }
+    .comment_button {
+      margin: -3rem 3rem 0rem 3rem;
+      color: rgb(8, 8, 8);
+    }
+    .sign_in_button {
+      margin: 2rem 10rem;
+      color: rgb(155, 37, 37);
     }
   }
   .right_flex {
@@ -125,4 +209,10 @@
       @extend .category_portion_heading;
     }
   }
+}
+.sign_in_prompt {
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: $read-font;
+  font-weight: bold;
 }

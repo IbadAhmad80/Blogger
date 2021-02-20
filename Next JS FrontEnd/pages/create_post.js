@@ -2,15 +2,15 @@ import React from "react";
 import axios from "axios";
 import { server } from "../config/index";
 import * as cookie from "cookie";
-import Cookie from "js-cookie";
 import StripeGateway from "../components/CreatePost/StrapiGateway";
 import CreateForm from "../components/CreatePost/CreateForm";
 import SignIn from "../components/SinglePost/SignIn";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function CreatePost({ user }) {
   const token = useSelector((state) => state.token);
-  console.log("role is", user.role.name);
+  const [account, isAccount] = React.useState(false);
+
   return (
     <>
       <div>
@@ -21,11 +21,13 @@ export default function CreatePost({ user }) {
             ) : (
               <CreateForm />
             )
+          ) : account === "Public" ? (
+            <StripeGateway />
           ) : (
-            ""
+            <CreateForm />
           )
         ) : (
-          <SignIn type="membership" />
+          <SignIn type="membership" isAccount={isAccount} />
         )}
       </div>
     </>

@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { getLikes } from "../../components/SinglePost/LikeHandler";
 import axios from "axios";
 import SignIn from "../../components/SinglePost/SignIn";
+import { AiTwotoneLike } from "react-icons/ai";
 
 export default function SinlgePost({ allBlogs, blog, author, category, data }) {
   const router = useRouter();
@@ -111,23 +112,38 @@ export default function SinlgePost({ allBlogs, blog, author, category, data }) {
             <div className={Styles.category}>
               <RelatedPost posts={queryData.sameAuthor} />
             </div>
-            <button onClick={() => setID(Math.random())}>
-              Like ( {likes} )
-            </button>
+            <div className={Styles.like_flex}>
+              <span className={Styles.like_heading}>Give it a thumbs Up? </span>
+              <span
+                className={Styles.like_logo}
+                onClick={() => setID(Math.random())}
+              >
+                <AiTwotoneLike />
+              </span>
+              <span className={Styles.like_amount}>{likes}</span>
+            </div>
+
             <div>
               <SignIn blog_id={blog.id} appendComment={appendComment} />
             </div>
-            <div>
+            <div style={{ marginTop: "4rem" }}>
               {queryData.comments &&
                 queryData.comments
                   .slice(queryData.comments.length - 2, queryData.length)
                   .map((comment) => {
                     return (
                       <div className={Styles.comments}>
-                        <div className={Styles.comment_maker}>
-                          {comment.publisher.charAt(0).toUpperCase()}
+                        <div style={{ display: "flex" }}>
+                          <div className={Styles.comment_maker_pic}>
+                            {comment.publisher.charAt(0).toUpperCase()}
+                          </div>
+                          <div className={Styles.comment_maker_name}>
+                            {comment.publisher}
+                          </div>
                         </div>
-                        <div>{comment.comment}</div>
+                        <div className={Styles.comment_text}>
+                          {comment.comment}
+                        </div>
                       </div>
                     );
                   })}

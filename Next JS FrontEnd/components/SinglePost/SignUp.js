@@ -9,8 +9,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Cookie from "js-cookie";
 import axios from "axios";
 import { server } from "../../config/index";
+import { useDispatch } from "react-redux";
+import { signIn } from "../redux/actions";
 
-export default function SignUp() {
+export default function SignUp({ isAccount }) {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
@@ -40,7 +43,9 @@ export default function SignUp() {
       });
       Cookie.set("token", res.data.jwt);
       setFormData({ password: "", username: "", email: "" });
+      isAccount && isAccount(res.data.user.role.name);
       //   console.log(Cookie.get("token"));
+      dispatch(signIn(res.data.jwt));
       handleCloseSignUp();
     } catch (err) {
       // alert(res.message.messages[0].message);

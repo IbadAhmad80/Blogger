@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/CreatePost.module.scss";
 import Image from "next/image";
-import SectionCarousel from "./Crausel";
+
 export default function CreateForm() {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
@@ -42,9 +42,11 @@ export default function CreateForm() {
   };
   return (
     <>
-      <h6 className={styles.contact_heading}>Create and Publish Your Blog</h6>
       <div className={styles.mainGrid}>
         <div className={styles.contact_form}>
+          <h6 className={styles.contact_heading}>
+            Create and Publish Your Blog
+          </h6>
           <form onSubmit={handleSubmit}>
             <br />
             <input
@@ -101,15 +103,12 @@ export default function CreateForm() {
         </div>
         <div>
           <div className={styles.image_flex}>
-            {
-              // <SectionCarousel />
-              <Image
-                src="/assets/wordpress.jpg"
-                alt="Picture of the author"
-                width={660}
-                height={430}
-              />
-            }
+            <Image
+              src="/assets/wordpress.jpg"
+              alt="Picture of the author"
+              width={660}
+              height={430}
+            />
           </div>
         </div>
       </div>

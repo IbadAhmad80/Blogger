@@ -1,4 +1,5 @@
 import React from "react";
+import ReactLoading from "react-loading";
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
@@ -25,7 +26,28 @@ const StripeGateway = ({ user }) => {
       sessionId,
     });
   };
-  return <div className="page-container">Loading ...</div>;
+  return (
+    <div
+      className="page-container"
+      style={{
+        margin: "2rem",
+        textAlign: "center",
+        fontWeight: "bolder",
+        fontSize: "1.3rem",
+        fontFamily: "Verdana",
+      }}
+    >
+      Loading Payment Gateway
+      <div style={{ textAlign: "center", marginLeft: "36rem" }}>
+        <ReactLoading
+          type={"bubbles"}
+          color={"rgb(65, 65, 255)"}
+          height={"25%"}
+          width={"15%"}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default StripeGateway;
