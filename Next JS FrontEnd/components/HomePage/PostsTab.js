@@ -12,8 +12,6 @@ import { green } from "@material-ui/core/colors/purple";
 import SwitchPost from "./SwitchPost";
 
 function TabPanel(props) {
-  const mostPopular = [];
-  const healthCategory = [];
   const { children, value, index, ...other } = props;
   const theme = createMuiTheme({
     palette: {
@@ -60,8 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function FullWidthTabs({ blogs }) {
-  // console.log("blogs are", blogs);
-  const readMore = blogs.slice(-3);
+  const readMore = blogs.slice(0, 3);
   let mostPopular = blogs;
   let entertainmentBlogs = [];
   blogs.map((blog) =>
@@ -69,10 +66,6 @@ export default function FullWidthTabs({ blogs }) {
       ? entertainmentBlogs.push(blog)
       : ""
   );
-
-  // console.log(
-  //   mostPopular.sort((a, b) => (a.likes > b.likes ? 1 : -1)).slice(-3)
-  // );
 
   const classes = useStyles();
   const theme = useTheme();
@@ -124,7 +117,7 @@ export default function FullWidthTabs({ blogs }) {
         <TabPanel value={value} index={1} dir={theme.direction}>
           {mostPopular
             .sort((a, b) => (a.likes > b.likes ? 1 : -1))
-            .slice(0, 3)
+            .slice(-3)
             .map((blog) => {
               return (
                 <SwitchPost

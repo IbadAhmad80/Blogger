@@ -79,13 +79,13 @@ function SectionCarousel({ blogs }) {
           asNavFor={nav2}
           ref={(slider) => setSlider1(slider)}
         >
-          {slidesData.map((slide, index) => {
+          {slidesData.map((slide) => {
             return (
               <div className={styles.slick_slide_1} key={slide.id}>
                 <img
                   className={styles.slick_slide_image}
                   src={`https://picsum.photos/800/400?img=${slide.id}`}
-                  onClick={() => alert(index)}
+                  onClick={() => console.log("slider data", slide)}
                 />
                 <Link
                   href={{

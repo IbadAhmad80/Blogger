@@ -28,7 +28,7 @@ export default function About({ blogs }) {
           <div className={styles.read_more_blogs}>
             {blogs
               .sort((a, b) => (a.likes > b.likes ? 1 : -1))
-              .slice(0, 4)
+              .slice(-4)
               .map((blog) => {
                 return (
                   <ReadMore
