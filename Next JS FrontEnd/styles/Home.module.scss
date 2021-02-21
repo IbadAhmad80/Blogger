@@ -109,6 +109,7 @@
 
   .read_more {
     @include featured_section(26rem);
+    height: auto;
     margin-left: 2rem;
     border: 1px solid gray;
     .read_more_heading {
@@ -120,7 +121,8 @@
     }
     .read_more_container {
       display: flex;
-      margin: 0.7rem 1rem 0rem 1rem;
+      margin: 0.7rem 1rem 1rem 1rem;
+      // border: 1px solid black;
       .read_more_logo {
         color: $primary-color;
         font-size: 1.3rem;
@@ -129,6 +131,7 @@
         font-family: $read-font;
         font-size: 1.1rem;
         margin-left: 1rem;
+        // margin-bottom: 1rem;
         color: black;
         font-weight: bold;
         cursor: pointer;
@@ -190,7 +193,7 @@
   .more_container {
     .post_more_grid {
       @extend .post_title_grid;
-      margin: 0.71rem 0rem 0.4rem 0rem;
+      margin: 0.8rem 0rem 0.4rem 0rem;
       padding: 1rem 0.8rem 1rem 0.8rem;
       height: 3.5rem;
       font-weight: bolder;
@@ -243,7 +246,7 @@
   color: rgb(204, 194, 194);
   padding: 8px 10px;
   position: absolute;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
   // background-color: rgb(39, 37, 37);
   left: 0px;
   font-size: 1.3em;
@@ -251,6 +254,7 @@
   font-weight: bold;
   bottom: 0px;
   width: 100%;
+  cursor: pointer;
 }
 .slick-prev:before,
 .slick-next:before {

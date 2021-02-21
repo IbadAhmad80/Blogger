@@ -59,7 +59,7 @@ export default function CreateForm() {
           },
         }
       );
-      alert("post is been uploaded successfully");
+      alert("blog is been created successfully");
       setData({ title: "", author: "", category: "", image: null });
     } catch (error) {
       console.log("", error);
@@ -91,22 +91,22 @@ export default function CreateForm() {
             <input
               className={styles.input_field}
               type="text"
-              pattern="[A-Za-z0-9_.,? ]{10,200}"
+              pattern="[A-Za-z0-9_.,? ]{10,45}"
               value={formData.title}
               onChange={(e) => setData({ ...formData, title: e.target.value })}
               required
-              placeholder="Post title ( 10-200 char )"
+              placeholder="Blog title ( 10-45 char )"
             />
             <br />
 
             <input
               className={styles.input_field}
               type="text"
-              pattern="[A-Za-z. ]{5,100}"
+              pattern="[A-Za-z. ]{5,20}"
               value={formData.author}
               onChange={(e) => setData({ ...formData, author: e.target.value })}
               required
-              placeholder="Post Author ( 5-100 char )"
+              placeholder="Blog Author ( 5-20 char )"
             />
             <br />
             <input
@@ -118,7 +118,7 @@ export default function CreateForm() {
                 setData({ ...formData, category: e.target.value })
               }
               required
-              placeholder="Post Category"
+              placeholder="Blog Category"
             />
             <br />
             <input

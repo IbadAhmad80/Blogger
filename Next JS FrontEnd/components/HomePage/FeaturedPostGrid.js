@@ -41,7 +41,7 @@ export default function FeaturedPostGrid({ title, image, images, id }) {
                 className={Styles.post_title_grid}
                 style={{
                   backgroundImage:
-                    "linear-gradient(rgba(5, 0, 0, 0.8),rgba(5, 0, 0, 0.8))",
+                    "linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85))",
                   cursor: "pointer",
                 }}
               >

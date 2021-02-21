@@ -32,7 +32,7 @@ function SectionCarousel({ blogs }) {
     dots: true,
     centerMode: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     swipeToSlide: true,
     focusOnSelect: true,
     centerPadding: "10px",
@@ -41,33 +41,33 @@ function SectionCarousel({ blogs }) {
   const slidesData = [
     {
       id: 1,
-
       label: blogs[0].title,
+      post_id: blogs[0]._id,
     },
     {
       id: 2,
-
       label: blogs[1].title,
+      post_id: blogs[1]._id,
     },
     {
       id: 3,
-
       label: blogs[2].title,
+      post_id: blogs[2]._id,
     },
     {
       id: 4,
-
       label: blogs[3].title,
+      post_id: blogs[3]._id,
     },
     {
       id: 5,
-
       label: blogs[4].title,
+      post_id: blogs[4]._id,
     },
     {
       id: 6,
-
       label: blogs[5].title,
+      post_id: blogs[5]._id,
     },
   ];
 
@@ -79,24 +79,31 @@ function SectionCarousel({ blogs }) {
           asNavFor={nav2}
           ref={(slider) => setSlider1(slider)}
         >
-          {slidesData.map((slide, index) => (
-            <div className={styles.slick_slide_1} key={slide.id}>
-              <img
-                className={styles.slick_slide_image}
-                src={`https://picsum.photos/800/400?img=${slide.id}`}
-              />
-              <Link
-                href={{
-                  pathname: `/posts/${blogs[0].id}`,
-                  query: { id: blogs[index].id },
-                }}
-              >
-                <label className={styles.slick_slide_label}>
-                  {slide.label}
-                </label>
-              </Link>
-            </div>
-          ))}
+          {slidesData.map((slide, index) => {
+            return (
+              <div className={styles.slick_slide_1} key={slide.id}>
+                <img
+                  className={styles.slick_slide_image}
+                  src={`https://picsum.photos/800/400?img=${slide.id}`}
+                  onClick={() => alert(index)}
+                />
+                <Link
+                  href={{
+                    pathname: `/posts/${slide.post_id}`,
+                    query: { id: slide.post_id },
+                  }}
+                  as={`/posts/${slide.post_id}`}
+                >
+                  <label
+                    className={styles.slick_slide_label}
+                    // onClick={() => alert(slide.label)}
+                  >
+                    {slide.label}
+                  </label>
+                </Link>
+              </div>
+            );
+          })}
         </Slider>
         <div className={styles.thumbnail_slider_wrap}>
           <Slider

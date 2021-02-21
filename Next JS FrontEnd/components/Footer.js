@@ -48,7 +48,7 @@ export default function Footer() {
       <div className={Styles.mainGrid}>
         <div className={Styles.footer_heading}>
           {" "}
-          Join Our Newsletter to become updated every instances
+          Join Our Newsletter to become updated every instance
         </div>
 
         <div className={Styles.getStart}>

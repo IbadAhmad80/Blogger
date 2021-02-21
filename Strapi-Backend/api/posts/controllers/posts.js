@@ -11,4 +11,14 @@ module.exports = {
       (post) => post.categories[0].name === ctx.request.url.split("/")[3]
     );
   },
+  async findByName(ctx) {
+    const posts = await strapi.services.posts.find(ctx.query);
+    console.log(
+      "and here it is",
+      decodeURIComponent(ctx.request.url.split("/")[3])
+    );
+    return posts.filter(
+      (post) => post.title === decodeURIComponent(ctx.request.url.split("/")[3])
+    );
+  },
 };

@@ -56,7 +56,7 @@ export default function MoreBlogs({ title, image, id, type, images }) {
               }
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)",
+                  "linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)",
               }}
             >
               {title}

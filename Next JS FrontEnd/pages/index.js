@@ -40,7 +40,7 @@ export default function Home({ blogs }) {
       </div>
       <div className={styles.more_blogs}>
         {blogs.map((blog, index) => {
-          return index > -1 ? (
+          return index < 33 ? (
             <MoreBlogs
               title={blog.title}
               image={blog.image}

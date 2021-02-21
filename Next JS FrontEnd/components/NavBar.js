@@ -13,9 +13,11 @@ import Cookie from "js-cookie";
 import axios from "axios";
 import { server } from "../config/index";
 import { withStyles } from "@material-ui/core/styles";
+import { useRouter } from "next/router";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemText from "@material-ui/core/ListItemText";
+
 import { AiFillCaretDown } from "react-icons/ai";
 
 const StyledMenu = withStyles({
@@ -50,6 +52,8 @@ const StyledMenuItem = withStyles(() => ({
 }))(MenuItem);
 
 export default function Navbar() {
+  const router = useRouter();
+  const [postName, setPostName] = React.useState(null);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const [username, setUsername] = React.useState("");
@@ -61,6 +65,12 @@ export default function Navbar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const searchPostByName = async () => {
+    const res = await axios.get(`${server}/posts/name/${postName}`);
+    router.push(`/posts/${res.data[0].id}`);
+    setPostName("");
   };
   React.useEffect(() => {
     if (Cookie.get("token")) {
@@ -175,8 +185,13 @@ export default function Navbar() {
                   required={true}
                   className={navBarStyles.form_input}
                   placeholder="Search"
+                  value={postName}
+                  onChange={(e) => setPostName(e.target.value)}
                 />
-                <FaSearch className={navBarStyles.search_logo} />
+                <FaSearch
+                  className={navBarStyles.search_logo}
+                  onClick={searchPostByName}
+                />
               </div>
             </div>
           </Grid>

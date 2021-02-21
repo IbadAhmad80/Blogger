@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/posts/name/:name",
+      "handler": "posts.findByName",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/posts/count",
       "handler": "posts.count",
       "config": {

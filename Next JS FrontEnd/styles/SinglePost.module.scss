@@ -163,6 +163,7 @@
       @include featured_section(25rem);
       margin: 4rem 0rem 4rem 0rem;
       border: 1px solid gray;
+      height: auto;
       .read_more_heading {
         padding: 1rem 0rem 0.7rem 2rem;
         font-family: $primary-font;
@@ -172,7 +173,7 @@
       }
       .read_more_container {
         display: flex;
-        margin: 0.7rem 1rem 0rem 1rem;
+        margin: 0.7rem 1rem 1rem 1rem;
         .read_more_logo {
           color: $primary-color;
           font-size: 1.3rem;

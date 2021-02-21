@@ -54,7 +54,7 @@ export default function RelatedPost({ posts }) {
                     className={styles.post}
                     style={{
                       backgroundImage:
-                        "linear-gradient(rgba(15, 0, 0, 0.8),rgba(15, 0, 0, 0.8)",
+                        "linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)",
                     }}
                   >
                     {blog.title}

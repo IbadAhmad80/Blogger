@@ -15,7 +15,7 @@
       "type": "string",
       "required": true,
       "maxLength": 100,
-      "minLength": 20
+      "minLength": 10
     },
     "categories": {
       "collection": "category",
@@ -26,20 +26,15 @@
       "required": true
     },
     "likes": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "image": {
       "type": "string",
       "required": true
     },
     "images": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false
+      "type": "string"
     }
   }
 }
