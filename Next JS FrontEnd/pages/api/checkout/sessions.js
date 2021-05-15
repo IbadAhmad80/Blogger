@@ -1,6 +1,4 @@
 import Stripe from "stripe";
-import axios from "axios";
-import { server } from "../../../config/index";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2020-03-02",
 });

@@ -2,17 +2,18 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import axios from "axios";
 import React from "react";
+import ReactLoading from "react-loading";
 import { server } from "../config/index";
 import * as cookie from "cookie";
-mport { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 export default function Result() {
   const router = useRouter();
 
   React.useEffect(() => {
-    router.push("/create_from");
+    router.push("/create_post");
   });
 
-   useSWR(
+  useSWR(
     router.query.session_id ? `/api/checkout/${router.query.session_id}` : null,
     (url) => fetch(url).then((res) => res.json())
   );

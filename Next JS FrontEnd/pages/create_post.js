@@ -46,9 +46,10 @@ export const getServerSideProps = async (context) => {
         Authorization: `Bearer ${parsedCookie.token}`,
       },
     }));
+  console.log("user data", user && user.data);
   return {
     props: {
-      user: parsedCookie ? user.data : "",
+      user: parsedCookie && parsedCookie.token ? user.data : "",
     },
   };
 };
