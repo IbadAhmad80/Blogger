@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "../../styles/Home.module.scss";
-import Link from "next/Link";
+import Link from "next/link";
 import styles from "../../styles/SinglePost.module.scss";
 export default function SwitchPost({ title, image, images, id, type }) {
   let img =

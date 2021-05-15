@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/Home.module.scss";
 import { ImBullhorn } from "react-icons/im";
-import Link from "next/Link";
+import Link from "next/link";
 import Styles from "../../styles/SinglePost.module.scss";
 
 export default function ReadMore({ blogs, type }) {

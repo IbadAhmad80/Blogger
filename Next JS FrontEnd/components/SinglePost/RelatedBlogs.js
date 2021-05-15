@@ -1,6 +1,6 @@
 import styles from "../../styles/SinglePost.module.scss";
 import Carousel from "react-elastic-carousel";
-import Link from "next/Link";
+import Link from "next/link";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },

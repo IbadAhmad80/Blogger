@@ -1,4 +1,4 @@
-import Link from "next/Link";
+import Link from "next/link";
 import FeaturedComponents from "../components/HomePage/FeaturedPosts";
 import styles from "../styles/Home.module.scss";
 import { server } from "../config/index";

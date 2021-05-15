@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import styles from "../../styles/Home.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Link from "next/Link";
+import Link from "next/link";
 
 function SectionCarousel({ blogs }) {
   const [nav1, setNav1] = useState(null);
